@@ -7,16 +7,24 @@
         <meta charset="UTF-8">
         <title>Charles-Anthony Gregoire</title>
         <style>
-            body{background-color:powderblue}
-            h1  {color: blue;}
-            p   {color: #054bad; font-weight:500; font-size:20px}
-
+            body{
+                background-color:powderblue;
+            }
+            h1{
+                color: blue;
+            }
+            p{
+                color: #054bad;
+                font-weight: 500;
+                font-size: 20px
+            }
             header{
                 position: sticky;
                 top: 0;
                 background-color: #054bad;
                 overflow: hidden;
                 padding-bottom: 15px;
+                z-index: 1000;
             }
             header a{
                 float: left;
@@ -28,9 +36,7 @@
                 text-decoration: none;
                 font-size: 30px;
             }
-            header a:hover{
-                color: white;
-            }
+            header a:hover{ color: white; }
             #centerdiv{
                 max-width: 1000px;
                 margin: auto;
@@ -41,9 +47,11 @@
 
     <body>
         <header>
-            <h3><a href="index.html">Home</a></h3>
-            <h3><a href="my_vacation.html">Dream Vacation</a></h3>
-            <h3><a href="my_artistic_self.html">Artistic Self</a></h3>
+            <nav>
+                <h3><a href="index.html">Home</a></h3>
+                <h3><a href="my_vacation.html">Dream Vacation</a></h3>
+                <h3><a href="my_artistic_self.html">Artistic Self</a></h3>
+            </nav>
         </header>
 
         <div id="centerdiv">
