@@ -63,9 +63,9 @@ nav a:active {
     font-size: 30px;
 }
 
-nav a.active {          /* Class to be used with JavaScript to highlight current page */
+.current_page {
     color: #B069DB;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -158,4 +158,21 @@ footer {
     flex-direction: column;
 }
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {     /* Track color */
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {     /* Handle color */
+  background: #B069DB;
+}
+
+::-webkit-scrollbar-thumb:hover {    /* Handle on hover */
+  background: #9703b1;
+}
 
