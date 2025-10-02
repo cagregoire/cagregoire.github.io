@@ -60,13 +60,32 @@ nav a:hover {
 
 nav a:active {
     color: #B069DB;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 .current_page {
     color: #B069DB;
     font-size: 30px;
     font-weight: bold;
+}
+
+/* Page Hyperlink Styling */
+
+a {
+    color: #054bad;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+a:hover {
+    color: rgb(242, 74, 74);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+a:active {
+    color: red;
+    font-size: 24px;
 }
 
 /* Footer Styling */
