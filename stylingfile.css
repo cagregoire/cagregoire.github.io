@@ -1,0 +1,178 @@
+
+/* Main Styling */
+
+html, body {
+    background-color: powderblue;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+h1 {
+    color: blue;
+}
+
+p {
+    color: #054bad;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+table,th,td {
+    border: 1px solid black;
+    font-size: 20px;
+    text-align: left;
+}
+
+ul {
+    list-style-type: disc;
+    color: #054bad;
+    font-size: 20px;
+}
+
+/* Navigation Styling */
+
+nav {
+    position: sticky;
+    top: 0;
+    background-color: #054bad;
+    overflow: hidden;
+    padding-bottom: 16px;
+    z-index: 1000;
+}
+
+nav a {
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    align-items: center;
+    padding: 1rem 0;
+    color: powderblue;
+    font-family: "Courier New", monospace;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+nav a:hover {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+nav a:active {
+    color: #B069DB;
+    font-size: 30px;
+}
+
+.current_page {
+    color: #B069DB;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+
+footer {
+    background-color: #054bad;
+    color: powderblue;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    height: 32px;
+    width: 100%;
+    display: flex;
+    align-items: center;       /* vertical center */
+    justify-content: center;   /* horizontal center */
+    margin-top: auto;
+    bottom: 0;
+    left: 0;
+}
+
+/* ID selector */
+
+#centerdiv {
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+}
+
+#back_image {
+    background-image: url(https://cdn.britannica.com/57/183257-050-0BA11B4B/Roger-Federer-2012.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1600px 1080px;
+    height: 1000px;
+}
+
+#ambitious {
+    color: #ff000d;
+    font-size: 80px;
+    top: 280px;
+    left: 320px;
+    transform: rotate(-30deg);
+}
+
+#fitness {
+    color: #26F7FD;
+    font-size: 50px;
+    top: 380px;
+    left: 950px;
+    transform: rotate(25deg);
+}
+
+#entrepreneur {
+    color: #DF00FF;
+    font-size: 35px;
+    top: 750px;
+    left: 500px;
+    transform: rotate(10deg);
+}
+
+#comp {
+    color: #ffff00;
+    font-size: 60px;
+    top: 690px;
+    left: 1100px;
+    transform: rotate(10deg);
+}
+
+#racket {
+    color: #f98617;
+    font-size: 70px;
+    top: 980px;
+    left: 780px;
+    transform: rotate(-10deg);
+}
+
+/* Class Selector */
+
+.keyword {
+    position: absolute;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.body_wrapper{
+    box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {     /* Track color */
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {     /* Handle color */
+  background: #B069DB;
+}
+
+::-webkit-scrollbar-thumb:hover {    /* Handle on hover */
+  background: #9703b1;
+}
+

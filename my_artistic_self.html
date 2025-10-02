@@ -5,122 +5,44 @@
         <meta name="description" content="My Artistic Self">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="stylingfile.css">
         <title>Artistic Self</title>
-        <style>
-            body{
-                background-color:powderblue;
-            }
-            h1{
-                color: blue;
-                text-align: center;
-            }
-            p{
-                color: #054bad;
-                font-weight: 500;
-                font-size: 20px
-            }
-            nav{
-                position: sticky;
-                top: 0;
-                background-color: #054bad;
-                overflow: hidden;
-                padding-bottom: 15px;
-                z-index: 1000;
-            }
-            nav a{
-                float: left;
-                width: 33.33%;
-                text-align: center;
-                padding: 1rem 0;
-                color: powderblue;
-                font-family: Courier New;
-                text-decoration: none;
-                font-size: 30px;
-            }
-            nav a:hover{ color: white; }
-            #centerdiv{
-                max-width: 1000px;
-                margin: auto;
-                padding: 1rem;
-            }
-            #back_image{
-                background-image: url(https://cdn.britannica.com/57/183257-050-0BA11B4B/Roger-Federer-2012.jpg);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: 1600px 1080px;
-                height: 1000px;
-            }
-            .keyword{
-                position: absolute;
-                font-family: Georgia, serif;
-                font-weight: bold;
-                margin: 20px;
-            }
-            #ambitious{
-                color: #ff000d;
-                font-size: 80px;
-                top: 280px;
-                left: 320px;
-                transform: rotate(-30deg);
-            }
-            #fitness{
-                color: #26F7FD;
-                font-size: 50px;
-                top: 380px;
-                left: 950px;
-                transform: rotate(25deg);
-            }
-            #entrepreneur{
-                color: #DF00FF;
-                font-size: 35px;
-                top: 750px;
-                left: 500px;
-                transform: rotate(10deg);
-            }
-            #comp{
-                color: #ffff00;
-                font-size: 60px;
-                top: 690px;
-                left: 1100px;
-                transform: rotate(10deg);
-            }
-            #racket{
-                color: #f98617;
-                font-size: 70px;
-                top: 980px;
-                left: 780px;
-                transform: rotate(-10deg);
-            }
-        </style>
     </head>
 
     <body>
-        <nav>
-            <h3><a href="index.html">Home</a></h3>
-            <h3><a href="my_vacation.html">Dream Vacation</a></h3>
-            <h3><a href="my_artistic_self.html">Artistic Self</a></h3>
-        </nav>
 
-        <header>
-            <h1>
-                Discover me through art
-            </h1>
-        </header>
+        <div class="body_wrapper">
 
-        <div id="back_image">
-            <p class="keyword" id="ambitious">Ambitious</p>
-            <p class="keyword" id="fitness">Physical Fitness</p>
-            <p class="keyword" id="entrepreneur">Entrepreneur</p>
-            <p class="keyword" id="comp">Competitive</p>
-            <p class="keyword" id="racket">Racket Sports</p>
+            <nav>
+                <h3><a href="index.html">Home</a></h3>
+                <h3><a href="my_vacation.html">Dream Vacation</a></h3>
+                <h3><a href="my_artistic_self.html" class="current_page">Artistic Self</a></h3>
+            </nav>
+
+            <header>
+                <h1 style="text-align:center">Discover me through art</h1>
+            </header>
+
+            <div id="back_image">
+                <p class="keyword" id="ambitious">Ambitious</p>
+                <p class="keyword" id="fitness">Physical Fitness</p>
+                <p class="keyword" id="entrepreneur">Entrepreneur</p>
+                <p class="keyword" id="comp">Competitive</p>
+                <p class="keyword" id="racket">Racket Sports</p>
+            </div>
+
+            <div id="centerdiv">
+
+                <p style="margin-bottom:60px">
+                    I grew up watching Roger Federer on TV, as I’ve always loved racket sports like tennis and badminton and played competitively throughout my childhood and adolescence.
+                    I like to think of him as a significant influence in shaping the kind of person I want to be and the goals I want to achieve, such as owning a business, pursuing dentistry, and maintaining my commitment to physical fitness.
+                    Roger Federer really represents all these sides of myself in one person.
+                </p>
+
+            </div>
         </div>
-        <div id="centerdiv">
-            <p>
-                I grew up watching Roger Federer on TV, as I’ve always loved racket sports like tennis and badminton and played competitively throughout my childhood and adolescence.
-                I like to think of him as a significant influence in shaping the kind of person I want to be and the goals I want to achieve, such as owning a business, pursuing dentistry, and maintaining my commitment to physical fitness.
-                Roger Federer really represents all these sides of myself in one person.
-            </p>
-        </div>
+
+        <footer>© 2025 CSL203 All rights reserved.</footer>
 
     </body>
 </html>
