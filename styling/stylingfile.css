@@ -7,7 +7,7 @@ html, body {
     height: 100%;
 }
 
-h1 {
+h1, h2 {
     color: blue;
 }
 
@@ -42,7 +42,7 @@ nav {
 
 nav a {
     float: left;
-    width: 33.33%;
+    width: 20%;
     text-align: center;
     align-items: center;
     padding: 1rem 0;
@@ -109,7 +109,7 @@ footer {
 
 #centerdiv {
     max-width: 1000px;
-    margin: auto;
+    margin: 0 auto;
     padding: 1rem;
 }
 
