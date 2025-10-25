@@ -7,6 +7,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../styling/stylingfile.css">
         <script src="../script/1-marketplace.js" defer></script>
+        <script src="../script/nav.js" defer></script>
         <title>Marketplace</title>
     </head>
 
@@ -14,13 +15,8 @@
 
         <div class="body_wrapper">
 
-            <nav>
-                <h3><a href="../index.html">Home</a></h3>
-                <h3><a href="my_vacation.html">Dream Vacation</a></h3>
-                <h3><a href="my_artistic_self.html">Artistic Self</a></h3>
-                <h3><a href="marketplace.html" class="current_page">Marketplace</a></h3>
-                <h3><a href="calculators.html">Calculators</a></h3>
-            </nav>
+            <nav id="main-nav"></nav>
+            <script>setNav()</script>
 
             <div id="centerdiv">
                 <div id="output">

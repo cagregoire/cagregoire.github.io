@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styling/stylingfile.css">
+        <script src="../script/nav.js" defer></script>
         <title>Charles-Anthony Gregoire</title>
     </head>
 
@@ -13,13 +14,8 @@
 
         <div class="body_wrapper">
 
-            <nav>
-                <h3><a href="index.html" class="current_page">Home</a></h3>
-                <h3><a href="pages/my_vacation.html">Dream Vacation</a></h3>
-                <h3><a href="pages/my_artistic_self.html">Artistic Self</a></h3>
-                <h3><a href="pages/marketplace.html">Marketplace</a></h3>
-                <h3><a href="pages/calculators.html">Calculators</a></h3>
-            </nav>
+            <nav id="main-nav"></nav>
+            <script>setNav()</script>
 
             <div id="centerdiv">
 

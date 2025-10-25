@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../styling/stylingfile.css">
         <script src="../script/2-calculator.js" defer></script>
         <script src="../script/2-calculator_utils.js" defer></script>
+        <script src="../script/nav.js" defer></script>
         <title>Calculators</title>
         <style> 
             @media screen and (max-width: 800px) {
@@ -62,13 +63,8 @@
 
         <div class="body_wrapper">
 
-            <nav>
-                <h3><a href="../index.html">Home</a></h3>
-                <h3><a href="my_vacation.html">Dream Vacation</a></h3>
-                <h3><a href="my_artistic_self.html">Artistic Self</a></h3>
-                <h3><a href="marketplace.html">Marketplace</a></h3>
-                <h3><a href="calculators.html" class="current_page">Calculators</a></h3>
-            </nav>
+            <nav id="main-nav"></nav>
+            <script>setNav()</script>
 
             <!-- Main calculator section -->
             <div id="centerdiv">
