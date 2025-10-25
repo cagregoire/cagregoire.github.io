@@ -10,7 +10,7 @@ function setNav(current_path) {
 
     current_path = splitAtRoot(current_path);
 
-    fetch('/repo/pages/nav.html')    // Leading slash make sure that path is from root for Github repo
+    fetch('/cagregoire.github.io/pages/nav.html')    // Leading slash make sure that path is from root for Github repo
         .then(r => r.text())
         .then(html => {
 
