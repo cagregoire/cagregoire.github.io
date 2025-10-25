@@ -10,14 +10,14 @@ function setNav(current_path) {
 
     current_path = splitAtRoot(current_path);
 
-    fetch('pages/nav.html')
+    fetch('/repo/pages/nav.html')    // Leading slash make sure that path is from root for Github repo
         .then(r => r.text())
         .then(html => {
 
             document.getElementById('main-nav').innerHTML = html;       // Place the navigation HTML into <nav id="main-nav">
 
             const nav = document.getElementById('main-nav');
-            
+
             for (let child of nav.children){
 
                 const link = child.querySelector('a');
