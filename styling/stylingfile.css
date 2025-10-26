@@ -42,14 +42,14 @@ nav {
 
 nav a {
     float: left;
-    width: 20%;
+    width: 16.66%;
     text-align: center;
     align-items: center;
     padding: 1rem 0;
     color: powderblue;
     font-family: "Courier New", monospace;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 nav a:hover {

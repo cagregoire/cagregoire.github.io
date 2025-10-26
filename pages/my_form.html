@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="Charles-Anthony Gregoire">
+        <meta name="description" content="Casper Form">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../styling/stylingfile.css">
+        <title>Casper Quiz</title>
+        <style>
+            @media screen and (max-width: 800px) {
+                .casperform_div {
+                    max-width: 75%;
+                    margin: auto;
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .casperform_div {
+                display: grid;
+                grid-gap: 2rem;
+                justify-content: center;
+                margin-top: 2rem;
+                padding: 1rem;
+            }
+
+            .casperform_div div {
+                margin-top: 0px;
+                padding: 1rem;
+            }
+
+            .casperform_div fieldset {
+                background-color: powderblue;
+                border: 3px solid #DF00FF;
+                border-radius: 8px;
+            }
+
+            legend {
+                font-weight: bold;
+                font-size: 1.2rem;
+                color: blue;
+            }
+
+            label {
+                color: #054bad;
+                border-color: powderblue;
+            }
+
+            fieldset p{
+                font-weight: bold;
+            }
+
+            form input[type="submit"] {
+                background-color: #28a745;
+                color: white;
+                font-size: 1.2rem;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                display: block;
+                margin: 20px auto 0 auto;
+            }
+
+            form input[type="submit"]:hover {
+                background-color: #218838;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="body_wrapper">
+
+            <nav id="main-nav"></nav>
+
+            <div id="centerdiv">
+
+                <h1 style="text-align: center; margin-bottom: 1rem">Casper Values Self-Assessment Quiz</h1>
+
+                <div class="casperform_div">
+
+                    <form onsubmit="return validate(event)">
+    
+                        <fieldset>
+                    
+                            <legend>Discover Your Strongest Casper Value</legend>
+                            
+                            <br><label for="name">Enter your first name:</label><br>
+                            <input type="text" id="name" name="name" placeholder="First name"><br><br>
+
+                            <label for="email">Enter a valid email:</label><br>
+                            <input type="email" id="email" name="email" placeholder="Email"><br><br><hr>
+
+                            <p>1. When faced with a conflict between two friends, what do you usually do first?</p>
+                            <label><input type="radio" name="q1" value="1"> Listen carefully to both sides </label><br>
+                            <label><input type="radio" name="q1" value="2"> Help them talk it out </label><br>
+                            <label><input type="radio" name="q1" value="3"> Make sure both are treated fairly </label><br>
+                            <label><input type="radio" name="q1" value="4"> Reflect on what’s the right thing to do </label><br>
+                            <label><input type="radio" name="q1" value="5"> Stay calm and help find a solution </label><br>
+                            <label><input type="radio" name="q1" value="6"> Keep your response respectful and professional </label><br><br>
+
+                            <p>2. When you make a mistake at school or work, your first thought is:</p>
+                            <label><input type="radio" name="q2" value="1"> How it might have affected others </label><br>
+                            <label><input type="radio" name="q2" value="2"> I should clarify what happened </label><br>
+                            <label><input type="radio" name="q2" value="3"> Was everyone impacted equally? </label><br>
+                            <label><input type="radio" name="q2" value="4"> What’s the most ethical way to fix this? </label><br>
+                            <label><input type="radio" name="q2" value="5"> How can I recover and learn from this? </label><br>
+                            <label><input type="radio" name="q2" value="6"> I’ll take accountability and correct it </label><br><br>
+
+                            <p>3. You’re working on a group project and one member isn’t contributing. What do you do?</p>
+                            <label><input type="radio" name="q3" value="1"> Ask if something is bothering them </label><br>
+                            <label><input type="radio" name="q3" value="2"> Bring it up during a meeting </label><br>
+                            <label><input type="radio" name="q3" value="3"> Reassign tasks to keep things balanced </label><br>
+                            <label><input type="radio" name="q3" value="4"> Avoid gossip and handle it respectfully </label><br>
+                            <label><input type="radio" name="q3" value="5"> Stay focused and adapt to the situation </label><br>
+                            <label><input type="radio" name="q3" value="6"> Address it directly but politely </label><br><br>
+
+                            <p>4. When things don’t go your way, how do you react?</p>
+                            <label><input type="radio" name="q4" value="1"> I try to understand others’ perspectives </label><br>
+                            <label><input type="radio" name="q4" value="2"> I talk it out and express my thoughts </label><br>
+                            <label><input type="radio" name="q4" value="3"> I make sure everyone still gets treated fairly </label><br>
+                            <label><input type="radio" name="q4" value="4"> I remind myself to stay true to my values </label><br>
+                            <label><input type="radio" name="q4" value="5"> I stay calm and keep going </label><br>
+                            <label><input type="radio" name="q4" value="6"> I maintain a positive and composed attitude </label><br><br>
+
+                            <p>5. When giving feedback to someone, what matters most to you?</p>
+                            <label><input type="radio" name="q5" value="1"> Being understanding and kind </label><br>
+                            <label><input type="radio" name="q5" value="2"> Being clear and respectful </label><br>
+                            <label><input type="radio" name="q5" value="3"> Ensuring fairness and balance </label><br>
+                            <label><input type="radio" name="q5" value="4"> Being honest but ethical </label><br>
+                            <label><input type="radio" name="q5" value="5"> Handling it constructively even if it’s hard </label><br>
+                            <label><input type="radio" name="q5" value="6"> Keeping it professional and focused </label><br><br>
+
+                            <p>6. When you’re under a lot of pressure, what keeps you grounded?</p>
+                            <label><input type="radio" name="q6" value="1"> Thinking about others who rely on me </label><br>
+                            <label><input type="radio" name="q6" value="2"> Talking through the problem </label><br>
+                            <label><input type="radio" name="q6" value="3"> Knowing everyone faces challenges </label><br>
+                            <label><input type="radio" name="q6" value="4"> Doing what I believe is morally right </label><br>
+                            <label><input type="radio" name="q6" value="5"> Staying calm and pushing forward </label><br>
+                            <label><input type="radio" name="q6" value="6"> Staying organized and composed </label><br><br>
+
+                            <p>7. When working with someone new, what’s your first approach?</p>
+                            <label><input type="radio" name="q7" value="1"> Make them feel welcomed </label><br>
+                            <label><input type="radio" name="q7" value="2"> Start a friendly conversation </label><br>
+                            <label><input type="radio" name="q7" value="3"> Ensure tasks are shared fairly </label><br>
+                            <label><input type="radio" name="q7" value="4"> Respect boundaries and values </label><br>
+                            <label><input type="radio" name="q7" value="5"> Stay adaptable to their style </label><br>
+                            <label><input type="radio" name="q7" value="6"> Keep things polite and courteous </label><br><br>
+
+                            <p>8. When someone disagrees with your opinion, how do you respond?</p>
+                            <label><input type="radio" name="q8" value="1"> Try to understand their feelings </label><br>
+                            <label><input type="radio" name="q8" value="2"> Have a calm discussion </label><br>
+                            <label><input type="radio" name="q8" value="3"> Ensure everyone’s opinion is heard </label><br>
+                            <label><input type="radio" name="q8" value="4"> Respect their stance even if I disagree </label><br>
+                            <label><input type="radio" name="q8" value="5"> Stay composed and open-minded </label><br>
+                            <label><input type="radio" name="q8" value="6"> Keep the conversation respectful </label><br><br>
+
+                            <input type="submit" value="Get My Result!"><br>
+
+                        </fieldset>
+                    </form>
+
+                    <div class="answer">
+                        <p><strong>Result:</strong></p>
+                        <p id="result"></p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <footer>© 2025 CSL203 All rights reserved.</footer>
+
+        <script src="../script/casperquiz.js" defer></script>
+
+    </body>
+</html>
