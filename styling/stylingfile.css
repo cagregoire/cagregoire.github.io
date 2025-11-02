@@ -42,7 +42,7 @@ nav {
 
 nav a {
     float: left;
-    width: 16.66%;
+    width: 14.28%;
     text-align: center;
     align-items: center;
     padding: 1rem 0;
@@ -177,6 +177,75 @@ footer {
     flex-direction: column;
 }
 
+/* Slideshow Styling */
+
+    /* Slideshow container */
+    .slideshow {
+        position: relative;
+        margin: 50px auto;
+        max-width: 800px;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Each individual image */
+    .slideshow_img img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Hide all slides by default = JS shows one */
+    .slideshow_img {
+        display: none;
+    }
+
+    /* Left and right buttons */
+    #prev, #next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 8px 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Left and right button specific position */
+    #prev {
+        left: 15px;
+    }
+
+    #next {
+        right: 15px;
+    }
+
+    #prev:hover, #next:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: yellow;
+    }
+
+    /* Responsive to varying screen size */
+    @media (max-width: 600px) {
+        .slideshow {
+            max-width: 95%;
+        }
+
+        #prev, #next {
+            font-size: 1.4rem;
+            padding: 6px 10px;
+        }
+    }
+
 /* Scrollbar */
 
 ::-webkit-scrollbar {
@@ -194,4 +263,3 @@ footer {
 ::-webkit-scrollbar-thumb:hover {    /* Handle on hover */
   background: #9703b1;
 }
-
