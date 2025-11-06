@@ -149,11 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div id="centerdiv">
 
-                <h1 style="text-align: center; margin-bottom: 1rem; padding-top: 45%;">Login to Access To-Do List</h1>
+                <h1 style="text-align: center; margin-bottom: 1rem; padding-top: 35%;">Login to Access To-Do List</h1>
 
                 <div class="todoForm_div">
                     <?php if (!empty($error)) : ?>
-                        <p style="color: red; text-align: center; font-weight: bold;"><?php echo $error; ?></p>
+                        <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 4px;"><?php echo $error; ?></p>
                     <?php endif; ?>
 
                     <form method="POST" action="login.php" style="text-align: center; margin-top: 2rem;">

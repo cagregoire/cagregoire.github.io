@@ -6,7 +6,7 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
         <div class="logo">
             <h3>
                 <a href="index.php">
-                    <img src="pictures/cgregoire_templogo.jpg" alt="CGREGOIRE" style="width:235px; height:72px; vertical-align: middle;">
+                    <img src="pictures/cgregoirelogo.jpg" alt="CGREGOIRE" style="width:235px; height:72px; vertical-align: middle;">
                 </a>
             </h3>
         </div>
@@ -36,7 +36,7 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
         <div class="logo">
             <h3>
                 <a href="../index.php">
-                    <img src="../pictures/cgregoire_templogo.jpg" alt="CGREGOIRE" style="width:235px; height:72px; vertical-align: middle;">
+                    <img src="../pictures/cgregoirelogo.jpg" alt="CGREGOIRE" style="width:235px; height:72px; vertical-align: middle;">
                 </a>
             </h3>
         </div>
