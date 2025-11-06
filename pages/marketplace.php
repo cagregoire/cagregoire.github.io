@@ -5,9 +5,9 @@
         <meta name="description" content="Marketplace">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../styling/stylingfile.css">
+        <link rel="stylesheet" href="../css/stylingfile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../script/1-marketplace.js" defer></script>
-        <script src="../script/nav.js" defer></script>
         <title>Marketplace</title>
     </head>
 
@@ -15,16 +15,16 @@
 
         <div class="body_wrapper">
 
-            <nav id="main-nav"></nav>
+            <?php include_once '../nav.php'; ?>
 
             <div id="centerdiv">
                 <div id="output">
-                    <!-- Script content comes here -->
+                    <!-- Script result goes here -->
                 </div>
             </div>
         </div>
 
-        <footer>© 2025 CSL203 All rights reserved.</footer>
+        <?php include_once '../footer.php'; ?>
 
     </body>
 </html>

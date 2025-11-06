@@ -5,8 +5,8 @@
         <meta name="description" content="Casper Form">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../styling/stylingfile.css">
-        <script src="../script/nav.js" defer></script>
+        <link rel="stylesheet" href="../css/stylingfile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Casper Quiz</title>
         <style>
             @media screen and (max-width: 800px) {
@@ -73,7 +73,7 @@
 
         <div class="body_wrapper">
 
-            <nav id="main-nav"></nav>
+            <?php include_once '../nav.php'; ?>
 
             <div id="centerdiv">
 
@@ -171,10 +171,9 @@
 
             </div>
         </div>
-
-        <footer>© 2025 CSL203 All rights reserved.</footer>
-
         <script src="../script/casperquiz.js" defer></script>
+
+        <?php include_once '../footer.php'; ?>
 
     </body>
 </html>
