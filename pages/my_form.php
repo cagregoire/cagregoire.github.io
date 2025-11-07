@@ -81,7 +81,7 @@
 
                 <div class="casperform_div">
 
-                    <form onsubmit="return validate(event)" action="quiz_verification.php" method="get">
+                    <form onsubmit="return validate(event)" action="quiz_verification.php" method="GET">
     
                         <fieldset>
                     
@@ -162,7 +162,6 @@
                         </fieldset>
                     </form>
                 </div>
-
             </div>
         </div>
         <script src="../script/casperquiz.js" defer></script>

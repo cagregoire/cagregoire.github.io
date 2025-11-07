@@ -1,32 +1,23 @@
 <?php
+$requiredFields = ['name','email','q1','q2','q3','q4','q5','q6','q7','q8'];
+$allFilled = true;
 
-// Verify that all prompts are filled
-
-if (
-    empty($_GET['name']) || 
-    empty($_GET['email']) ||
-    empty($_GET['q1']) ||
-    empty($_GET['q2']) ||
-    empty($_GET['q3']) ||
-    empty($_GET['q4']) ||
-    empty($_GET['q5']) ||
-    empty($_GET['q6']) ||
-    empty($_GET['q7']) ||
-    empty($_GET['q8'])
-) {
-    echo "<script>
-            alert('Please enter all required prompts.');
-            window.history.back();
-          </script>";
-    exit;
+foreach ($requiredFields as $field) {   // Check if all prompts are filled
+    if (empty($_GET[$field])) {
+        $allFilled = false;
+        break;
+    }
 }
 
-// Get name and email
+if (!$allFilled) {
+    header("Location: my_form.php?missing=1"); // Send user back to the form
+    exit();
+}
 
-$name = htmlspecialchars($_GET['name']);
+$name = htmlspecialchars($_GET['name']); 
 $email = htmlspecialchars($_GET['email']);
 
-$answers = [                // Collect all answers
+$answers = [
     $_GET['q1'], 
     $_GET['q2'], 
     $_GET['q3'], 
@@ -85,6 +76,7 @@ if (count($strongestValues) > 1) {
 }
 
 $description = $descriptions[$strongestValue] ?? "";
+
 ?>
 
 <!DOCTYPE html>
