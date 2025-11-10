@@ -1,7 +1,5 @@
 function validate(event) {
     
-    event.preventDefault();
-
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
 
@@ -59,7 +57,7 @@ function validate(event) {
         6: "Professionalism"
     };
 
-    const scores = {        // All values start at 0
+    let scores = {        // All values start at 0
         "Empathy": 0,
         "Communication": 0,
         "Equity": 0,

@@ -1,19 +1,40 @@
+<?php
+
+session_start();
+
+$correct_hash = "b14e9015dae06b5e206c2b37178eac45e193792c5ccf1d48974552614c61f2ff"; // hash of the correct password
+$error = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $password = $_POST['password'] ?? '';
+    $hashedInputted = hash('sha256', $password);
+
+    if ($hashedInputted === $correct_hash) {
+            
+        // to-do.php AND login.php are in the same folder
+        header('Location: to-do.php'); 
+        exit();
+
+    } else {
+        $error = "Incorrect password. Try again.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="author" content="Charles-Anthony Gregoire">
-        <meta name="description" content="To-Do List Form">
+        <meta name="description" content="Login Page for To-Do List">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../styling/stylingfile.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-        <script src="../script/nav.js" defer></script>
+        <link rel="stylesheet" href="../css/stylingfile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>To-Do List</title>
         <style>
             @media screen and (max-width: 800px) {
                 .todoForm_div {
-                    max-width: 75%;
-                    margin: auto;
                     grid-template-columns: 1fr;
                     gap: 1.5rem;
                 }
@@ -124,40 +145,28 @@
 
         <div class="body_wrapper">
 
-            <nav id="main-nav"></nav>
+            <?php include_once '../nav.php'; ?>
 
             <div id="centerdiv">
-                
-                <h1 style="text-align: center; margin-bottom: 1rem">To-Do List</h1>
-                <p style="text-align: center; margin-bottom: 1rem">Use the form below to add new tasks to create your to-do list:</p><br>
+
+                <h1 style="text-align: center; margin-bottom: 1rem; padding-top: 35%;">Login to Access To-Do List</h1>
 
                 <div class="todoForm_div">
+                    <?php if (!empty($error)) : ?>
+                        <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 4px;"><?php echo $error; ?></p>
+                    <?php endif; ?>
 
-                    <form id="todo_form" onsubmit="addItem(event)">
-                        
-                        <fieldset>
-
-                            <legend>My To-Do List</legend>
-
-                            <label for="todo_input" style="font-size: 20px">Add to your to-do list</label><br>
-                            <input type="text" id="todo_input" placeholder="Enter a task">
-                            <input type="submit" value="Add item">
-
-                        </fieldset>
+                    <form method="POST" action="login.php" style="text-align: center; margin-top: 2rem;">
+                        <label for="password" style="font-size: 20px;">Enter Password:</label><br><br>
+                        <input type="password" id="password" name="password" placeholder="Password" style="padding: 8px 12px; font-size: 16px;"><br><br>
+                        <input type="submit" value="Login" style="padding: 8px 16px; font-size: 16px; cursor: pointer;">
                     </form>
-
-                    <div>
-                        <h2 style="text-decoration: underline">Your To-Do List</h2>
-                        <ul id="todo_list"></ul>
-                    </div>
-
                 </div>
             </div>
         </div>
 
-        <footer>© 2025 CSL203 All rights reserved.</footer>
-
-        <script src="../script/todo.js" defer></script>
+        <?php include_once '../footer.php'; ?>
 
     </body>
 </html>
+

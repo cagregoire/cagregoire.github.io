@@ -1,28 +1,24 @@
 
-/* Main Styling */
+/* Core Styling */
 
 html, body {
     background-color: powderblue;
     box-sizing: border-box;
     height: 100%;
 }
-
 h1, h2 {
     color: blue;
 }
-
 p {
     color: #054bad;
     font-weight: 500;
     font-size: 20px;
 }
-
 table,th,td {
     border: 1px solid black;
     font-size: 20px;
     text-align: left;
 }
-
 ul {
     list-style-type: disc;
     color: #054bad;
@@ -35,62 +31,207 @@ nav {
     position: sticky;
     top: 0;
     background-color: #054bad;
-    overflow: hidden;
-    padding-bottom: 16px;
+    overflow: visible;
     z-index: 1000;
-}
-
-nav a {
-    float: left;
-    width: 14.28%;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
     align-items: center;
-    padding: 1rem 0;
+    padding: 4px 12px;
+    height: 80px;
+}
+nav .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+nav .links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+nav a {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: powderblue;
     font-family: "Courier New", monospace;
     text-decoration: none;
     font-size: 24px;
+    padding: 0 12px;
+}
+nav h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
 
+/* NAV INTERACTIONS */
 nav a:hover {
-    color: white;
-    font-size: 28px;
+    color: #B069DB;
     font-weight: bold;
+    transition: color 0.2s ease;
 }
-
 nav a:active {
     color: #B069DB;
-    font-size: 28px;
+    font-size: 24px;
 }
-
 .current_page {
     color: #B069DB;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
 }
 
-/* Page Hyperlink Styling */
+/* ====================
+    Dropdown container 
+   ==================== */
+
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+/* Dropdown button */
+.dropbtn {
+    background-color: transparent;
+    color: powderblue;
+    font-family: "Courier New", monospace;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 16px 0;
+}
+/* Dropdown content */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    background-color: #054bad;
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 2000;
+}
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+/* Dropdown links */
+.dropdown-content a {
+    display: block;
+    color: powderblue;
+    padding: 6px 16px;
+    text-align: left;
+    line-height: 1.2;  
+}
+.dropdown-content a:hover {
+    background-color: #054bad;
+}
+.arrow {
+    border: solid powderblue;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    margin-left: 4px;
+    padding: 4px;
+    transition: transform 0.3s ease;
+    transform: rotate(45deg);
+}
+/* Arrow rotation */
+.dropdown:hover .arrow {
+    transform: rotate(225deg);
+}
+
+
+/* ============================
+    Responsive Nav + HAMBURGER 
+   ============================ */
+
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: powderblue;
+    font-size: 32px;
+    cursor: pointer;
+}
+@media (max-width: 860px) {
+
+    /* Show hamburger */
+    .hamburger {
+        display: block;
+        margin-left: auto;
+    }
+    nav .links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 12px;
+        background-color: #054bad;
+        max-width: 220px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        padding: 8px 0;
+        z-index: 2000;
+    }
+    nav .links h3, nav .links .dropdown {
+        padding: 6px 16px;
+        text-align: left;
+    }
+    /* Adjust dropdown in mobile menu */
+    nav .links .dropdown-content {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: 12px;
+    }
+    nav .links .dropdown > .dropbtn {
+        display: none;             /* hide the button */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* WITHIN Page Hyperlink Styling */
 
 a {
     color: #054bad;
     font-weight: bold;
     font-size: 20px;
 }
-
 a:hover {
     color: rgb(242, 74, 74);
     font-size: 24px;
     font-weight: bold;
 }
-
 a:active {
     color: red;
     font-size: 24px;
 }
 
-/* Footer Styling */
 
-footer {
+
+/* Footer Styling */
+.footer {
     background-color: #054bad;
     color: powderblue;
     font-family: "Courier New", monospace;
@@ -105,14 +246,14 @@ footer {
     left: 0;
 }
 
-/* ID selector */
 
+
+/* MY ARTISTIC SELF class selector */
 #centerdiv {
     max-width: 1000px;
     margin: 0 auto;
     padding: 1rem;
 }
-
 #back_image {
     background-image: url(https://cdn.britannica.com/57/183257-050-0BA11B4B/Roger-Federer-2012.jpg);
     background-repeat: no-repeat;
@@ -120,7 +261,6 @@ footer {
     background-size: 1600px 1080px;
     height: 1000px;
 }
-
 #ambitious {
     color: #ff000d;
     font-size: 80px;
@@ -128,7 +268,6 @@ footer {
     left: 320px;
     transform: rotate(-30deg);
 }
-
 #fitness {
     color: #26F7FD;
     font-size: 50px;
@@ -136,7 +275,6 @@ footer {
     left: 950px;
     transform: rotate(25deg);
 }
-
 #entrepreneur {
     color: #DF00FF;
     font-size: 35px;
@@ -144,7 +282,6 @@ footer {
     left: 500px;
     transform: rotate(10deg);
 }
-
 #comp {
     color: #ffff00;
     font-size: 60px;
@@ -152,7 +289,6 @@ footer {
     left: 1100px;
     transform: rotate(10deg);
 }
-
 #racket {
     color: #f98617;
     font-size: 70px;
@@ -160,9 +296,6 @@ footer {
     left: 780px;
     transform: rotate(-10deg);
 }
-
-/* Class Selector */
-
 .keyword {
     position: absolute;
     font-family: Georgia, serif;
@@ -170,6 +303,7 @@ footer {
     margin: 20px;
 }
 
+/* Body Wrapper Styling */
 .body_wrapper{
     box-sizing: border-box;
     min-height: 100%;
@@ -177,31 +311,35 @@ footer {
     flex-direction: column;
 }
 
+
+
 /* Slideshow Styling */
 
     /* Slideshow container */
     .slideshow {
         position: relative;
         margin: 50px auto;
-        max-width: 800px;
+        width: 600px;
+        max-width: 700px;
+        height: 660px;
         text-align: center;
         overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
     }
-
-    /* Each individual image */
+    /* Each image */
     .slideshow_img img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         display: block;
+        max-width: none;
     }
-
     /* Hide all slides by default = JS shows one */
     .slideshow_img {
         display: none;
     }
-
     /* Left and right buttons */
     #prev, #next {
         position: absolute;
@@ -219,21 +357,17 @@ footer {
         user-select: none;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
-
     /* Left and right button specific position */
     #prev {
         left: 15px;
     }
-
     #next {
         right: 15px;
     }
-
     #prev:hover, #next:hover {
         background-color: rgba(0, 0, 0, 0.6);
         color: red;
     }
-
     /* Responsive to varying screen size */
     @media (max-width: 600px) {
         .slideshow {
@@ -246,20 +380,24 @@ footer {
         }
     }
 
+
+
 /* Scrollbar */
 
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 ::-webkit-scrollbar-track {     /* Track color */
   background: #f1f1f1;
 }
-
 ::-webkit-scrollbar-thumb {     /* Handle color */
   background: #B069DB;
 }
-
 ::-webkit-scrollbar-thumb:hover {    /* Handle on hover */
   background: #9703b1;
 }
+
+
+
+
+
