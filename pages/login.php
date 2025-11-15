@@ -1,23 +1,50 @@
 <?php
-
+require_once '../includes/config.php';
 session_start();
 
+// Logging out + confirmation message
+$message = "";
+if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
+    $message = "Successfully logged out";
+}
+
+// Sent directly to to-do.php if already logged in
+if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
+    header('Location: to-do.php');
+    exit();
+}
+
+$username = $_COOKIE['todo-username'] ?? "Guest";
 $correct_hash = "b14e9015dae06b5e206c2b37178eac45e193792c5ccf1d48974552614c61f2ff"; // hash of the correct password
 $error = "";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
     $password = $_POST['password'] ?? '';
     $hashedInputted = hash('sha256', $password);
+    $inputUsername = trim($_POST['username'] ?? '');
 
-    if ($hashedInputted === $correct_hash) {
-            
-        // to-do.php AND login.php are in the same folder
-        header('Location: to-do.php'); 
-        exit();
-
+    if (empty($inputUsername) || empty($password)) {
+        $error = "Please enter both username and password"; // I don't want correct password but no username to be possible
     } else {
-        $error = "Incorrect password. Try again.";
+
+        $hashedInputted = hash('sha256', $password);
+
+        if ($hashedInputted === $correct_hash) {
+
+            // Create a username cookie that lasts 1 year when CORRECT password
+            setcookie("todo-username", $inputUsername, time()+60*60*24*365, "/");
+
+            // Session becomes set as logged in
+            $_SESSION['is_logged_in'] = true;
+            
+            // to-do.php AND login.php are in the same folder
+            header('Location: to-do.php');
+            exit();
+
+        } else {
+            $error = "Incorrect password. Try again";
+        }
     }
 }
 ?>
@@ -97,7 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 background-color: #218838;
             }
 
-            .todoForm_div input[type="text"] {
+            .todoForm_div input[type="text"],
+            .todoForm_div input[type="password"] {
                 width: 90%;
                 padding: 10px;
                 margin: 10px 0;
@@ -145,27 +173,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="body_wrapper">
 
-            <?php include_once '../nav.php'; ?>
+            <?php include_once '../includes/nav.php'; ?>
 
             <div id="centerdiv">
 
                 <h1 style="text-align: center; margin-bottom: 1rem; padding-top: 35%;">Login to Access To-Do List</h1>
 
                 <div class="todoForm_div">
+
                     <?php if (!empty($error)) : ?>
                         <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 4px;"><?php echo $error; ?></p>
                     <?php endif; ?>
 
-                    <form method="POST" action="login.php" style="text-align: center; margin-top: 2rem;">
-                        <label for="password" style="font-size: 20px;">Enter Password:</label><br><br>
+                    <?php if (!empty($message)) : ?>
+                        <p style="color: green; text-align: center; font-weight: bold; margin-bottom: 4px;"><?php echo $message; ?></p>
+                    <?php endif; ?>
+
+                    <form method="POST" action="login.php" style="text-align: center; margin-top: 1rem;">
+                        
+                        <label for="username" style="font-size: 20px;">Username:</label><br><br>
+                        <input type="text" id="username" name="username" placeholder="Enter username"
+                            value="<?php echo htmlspecialchars($username); ?>" required><br><br>
+                    
+                        <label for="password" style="font-size: 20px;">Password:</label><br><br>
                         <input type="password" id="password" name="password" placeholder="Password" style="padding: 8px 12px; font-size: 16px;"><br><br>
-                        <input type="submit" value="Login" style="padding: 8px 16px; font-size: 16px; cursor: pointer;">
+                        
+                        <input type="submit" name="login" value="Login" style="padding: 8px 16px; font-size: 16px; cursor: pointer;">
                     </form>
                 </div>
             </div>
         </div>
 
-        <?php include_once '../footer.php'; ?>
+        <?php include_once '../includes/footer.php'; ?>
 
     </body>
 </html>

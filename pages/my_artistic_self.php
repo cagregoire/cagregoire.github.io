@@ -14,7 +14,7 @@
 
         <div class="body_wrapper">
 
-            <?php include_once '../nav.php'; ?>
+            <?php include_once '../includes/nav.php'; ?>
 
             <header>
                 <h1 style="text-align:center">Discover me through art</h1>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <?php include_once '../footer.php'; ?>
+        <?php include_once '../includes/footer.php'; ?>
 
     </body>
 </html>
