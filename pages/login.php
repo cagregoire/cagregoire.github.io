@@ -2,6 +2,15 @@
 require_once '../includes/config.php';
 session_start();
 
+$file = __DIR__ . '/../includes/login_attempts.json';
+
+// Load existing attempts (if file exists)
+if (file_exists($file)){
+    $attempts = json_decode(file_get_contents($file), true);
+} else {
+    $attempts = [];
+}
+
 // Logging out + confirmation message
 $message = "";
 if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
@@ -28,22 +37,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $error = "Please enter both username and password"; // I don't want correct password but no username to be possible
     } else {
 
-        $hashedInputted = hash('sha256', $password);
+        // If it is a first time user, everything is initialized
+        if (!isset($attempts[$inputUsername])) {
+            $attempts[$inputUsername] = [
+                'attempts' => 0,
+                'locked_until' => 0
+            ];
+        }
 
-        if ($hashedInputted === $correct_hash) {
-
-            // Create a username cookie that lasts 1 year when CORRECT password
-            setcookie("todo-username", $inputUsername, time()+60*60*24*365, "/");
-
-            // Session becomes set as logged in
-            $_SESSION['is_logged_in'] = true;
+        // Check if user is on cooldown, also tells time remaining on cooldown if the user is locked
+        if ($attempts[$inputUsername]['locked_until'] > time()) {
             
-            // to-do.php AND login.php are in the same folder
-            header('Location: to-do.php');
-            exit();
+            $remaining = $attempts[$inputUsername]['locked_until'] - time();
+            $error = "Too many incorrect attempts. Try again in {$remaining} seconds.";
 
         } else {
-            $error = "Incorrect password. Try again";
+
+            if ($hashedInputted === $correct_hash) {
+
+                // Reset attempts
+                $attempts[$inputUsername]['attempts'] = 0;
+                $attempts[$inputUsername]['locked_until'] = 0;
+
+                file_put_contents($file, json_encode($attempts));
+                
+                session_destroy();
+                session_start();
+
+                // Create a username cookie that lasts 1 year when CORRECT password
+                setcookie("todo-username", $inputUsername, time()+60*60*24*365, "/");
+                $_SESSION['is_logged_in'] = true;
+                
+                // to-do.php AND login.php are in the same folder
+                header('Location: to-do.php');
+                exit();
+
+            } else {
+
+                // Add +1 to attempt count
+                $attempts[$inputUsername]['attempts']++;
+
+                // Check if user has remaining attempts
+                if ($attempts[$inputUsername]['attempts'] >= 3) {
+                    $attempts[$inputUsername]['locked_until'] = time() + 30;
+                    $attempts[$inputUsername]['attempts'] = 0;
+                    $error = "Too many incorrect attempts. Cooldown for 30 seconds.";
+                } else {
+                    $error = "Incorrect password. Try again."; // Runs when user has some attempts remaining
+                }
+                file_put_contents($file, json_encode($attempts));
+            }
         }
     }
 }

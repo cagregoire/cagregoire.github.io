@@ -19,8 +19,8 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
             <div class="dropdown">
                 <button class="dropbtn">Discover Me <i class="arrow"></i></button>
                 <div class="dropdown-content">
-                    <a href="pages/my_vacation.php">Dream Vacation</a>
-                    <a href="pages/my_artistic_self.php">Artistic Self</a>
+                    <a href="pages/my_vacation.php" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">Dream Vacation</a>
+                    <a href="pages/my_artistic_self.php" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">Artistic Self</a>
                 </div>
             </div>
             <h3><a href="pages/marketplace.php">Marketplace</a></h3>
@@ -49,8 +49,8 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
             <div class="dropdown">
                 <button class="dropbtn">Discover Me <i class="arrow"></i></button>
                 <div class="dropdown-content">
-                    <a href="my_vacation.php">Dream Vacation</a>
-                    <a href="my_artistic_self.php">Artistic Self</a>
+                    <a href="my_vacation.php" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">Dream Vacation</a>
+                    <a href="my_artistic_self.php" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">Artistic Self</a>
                 </div>
             </div>
             <h3><a href="marketplace.php">Marketplace</a></h3>
