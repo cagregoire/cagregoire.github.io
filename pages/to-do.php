@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<?php
+require_once '../includes/config.php';
+session_start();
+
+// If not logged in, sent to login.php
+if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
+    header('Location: login.php');
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: login.php?logout=success');
+    exit();
+}
+
+$username = $_COOKIE['todo-username'] ?? "Guest";
+?>
+<DOCTYPE html>
 <html>
     <head>
         <meta name="author" content="Charles-Anthony Gregoire">
@@ -74,6 +92,25 @@
                 background-color: #218838;
             }
 
+            .logout_div form input[type="submit"] {
+                background-color: #ff0000ff;
+                width: auto;
+                margin: 10px auto 0 auto;
+                color: white;
+                font-size: 1.2rem;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                display: block;
+                margin: 20px auto 0 auto;
+                transition: background-color 0.3s ease;
+            }
+
+            .logout_div form input[type="submit"]:hover {
+                background-color: #c71616ff;
+            }
+
             .todoForm_div input[type="text"] {
                 width: 90%;
                 padding: 10px;
@@ -122,11 +159,24 @@
 
         <div class="body_wrapper">
 
-            <?php include_once '../nav.php'; ?>
+            <?php include_once '../includes/nav.php'; ?>
 
-            <div id="centerdiv">
-                
-                <h1 style="text-align: center; margin-bottom: 1rem">To-Do List</h1>
+            <div style="position: relative; margin-bottom: 1rem; width: 100%; text-align: center;">
+
+                <h1 style="text-align: center; margin-bottom: 1rem; margin-top: 2rem">Welcome back, <?php echo htmlspecialchars($username); ?>!<br>
+                    <?php echo htmlspecialchars($username); ?>'s To-Do List
+                </h1>
+
+                <div class="logout_div">
+                    <form method="POST" action="" style="position: absolute; right: 60px; top: 20px;">
+                        <input type="submit" name="logout" value="Log out">
+                    </form>
+                </div>
+
+            </div>
+
+            <div id="centerdiv">    
+            
                 <p style="text-align: center; margin-bottom: 1rem">Use the form below to add new tasks to create your to-do list:</p><br>
 
                 <div class="todoForm_div">
@@ -154,7 +204,7 @@
         </div>
         <script src="../script/todo.js" defer></script>
 
-        <?php include_once '../footer.php'; ?>
+        <?php include_once '../includes/footer.php'; ?>
 
     </body>
 </html>
