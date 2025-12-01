@@ -73,7 +73,7 @@
 
         <div class="body_wrapper">
 
-            <?php include_once '../nav.php'; ?>
+            <?php include_once '../includes/nav.php'; ?>
 
             <div id="centerdiv">
 
@@ -166,7 +166,7 @@
         </div>
         <script src="../script/casperquiz.js" defer></script>
 
-        <?php include_once '../footer.php'; ?>
+        <?php include_once '../includes/footer.php'; ?>
 
     </body>
 </html>

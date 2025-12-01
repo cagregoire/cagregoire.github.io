@@ -23,16 +23,19 @@ function validate(event) {
     if (name === "" || email === "") {
 
         alert("Please enter your first name and email.");
+        event.preventDefault();
         return false;
     }
     else {
         if (!email.includes("@") || !email.includes(".")) {
             alert("Please enter a valid email address.");
+            event.preventDefault();
             return false;
         }
 
         if (name === "") {
             alert("Please enter your first name.");
+            event.preventDefault();
             return false;
         }
     }
