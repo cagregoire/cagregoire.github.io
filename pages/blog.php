@@ -6,6 +6,20 @@
     $postsJson = file_get_contents("../includes/blog_posts.json");
     $posts = json_decode($postsJson, true);
 
+    // Filter by date
+    $sort = $_GET['sort'] ?? 'newest';
+
+    usort($posts, function($a, $b) use ($sort) {
+        $timeA = strtotime($a['date']); // Understands dates like "March 10, 2023"
+        $timeB = strtotime($b['date']);
+
+        if ($sort === 'newest') {
+            return $timeB - $timeA; // newest → oldest
+        } else {
+            return $timeA - $timeB; // oldest → newest
+        }
+    });
+
     $isDeleteMode = isset($_POST['delete_mode']);
 
     // Deleting post logic
@@ -102,7 +116,7 @@
 
                 <div class="leftcolumn">
                     
-                    <!-- Blog posts section, dynamic -->
+                    <!-- Printing blog posts in left column, dynamic -->
 
                     <?php foreach ($posts as $post): ?>
 
@@ -138,14 +152,27 @@
 
             <div class="rightcolumn">
 
-                <!-- About the blog section, static -->
+                <!-- Search bar section, at the top to avoid page shifting when dynamically searching -->
                 <div class="card">
-                    <h2 style="font-size: 36px;">Neo Egoist League</h2>
-                    <img src="../pictures/bluelock.png" alt="NEL Logo" style="width:100%">
-                    <p>The Neo Egoist League is a round-robin tournament between the world's top football clubs, where players prove their worth through a global auction system. Matches steer away from traditional rules by being “first to 3 goals” to promote a harsh natural-selection environment where egocentrism is rewarded.</p>
+                    <h2>Search Posts</h2>
+                    <input type="text" id="searchInput" placeholder="Search keywords..." style="width: 100%; padding: 8px; font-size: 16px;" onkeyup="searchPosts()">
                 </div>
 
-                <!-- Recent Posts section, dynamic -->
+                <!-- Sort by date card, reloads page to go immediately to first article -->
+                <div class="card">
+
+                    <h2>Filter</h2>
+   
+                    <form method="GET" action="blog.php">
+                        <select name="sort" onchange="this.form.submit()" style="width: 100%; padding: 8px; font-size: 16px;">
+                            <option value="newest" <?= ($sort === 'newest') ? 'selected' : '' ?>>Latest → Oldest</option>
+                            <option value="oldest" <?= ($sort === 'oldest') ? 'selected' : '' ?>>Oldest → Latest</option>
+                        </select>
+                    </form>
+
+                </div>
+                
+                <!-- Recent posts section, dynamically changes -->
                 <div class="card">
 
                     <h2>Recent Posts</h2>
@@ -165,7 +192,14 @@
                     </div>
                 </div>
 
-                <!-- NEL Ranking section, static, for fun -->
+                <!-- About the blog section for context -->
+                <div class="card">
+                    <h2 style="font-size: 36px;">Neo Egoist League</h2>
+                    <img src="../pictures/bluelock.png" alt="NEL Logo" style="width:100%">
+                    <p>The Neo Egoist League is a round-robin tournament between the world's top football clubs, where players prove their worth through a global auction system. Matches steer away from traditional rules by being “first to 3 goals” to promote a harsh natural-selection environment where egocentrism is rewarded.</p>
+                </div>
+
+                <!-- NEL Ranking section, for fun -->
                 <div class="card">
                     <h2>Current NEL Ranking</h2>
                     <img src="../pictures/nel_ranking.jpg" alt="NEL Ranking" style="width:100%">
@@ -173,14 +207,8 @@
 
             </div>
 
-
-
-
-
-
-
         <br>
         <?php include_once '../includes/footer.php'; ?>
-
+        <script src="../script/blog_search.js" defer></script>
     </body>
 </html>
