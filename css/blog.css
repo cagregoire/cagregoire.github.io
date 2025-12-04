@@ -145,6 +145,21 @@
     color: blue;
 }
 
+
+/* When searchign and nothing comes up, to avoid right column from shifting left completely and breaking the page, custom "NO RESULT" card is created */
+
+.noResults {
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+
+
 /* When screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {

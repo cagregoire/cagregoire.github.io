@@ -169,6 +169,9 @@
 
                     </div>
 
+                    <!-- "No results" card that appears to avoid right column shifting left if nothing appears after searching keyword -->
+                    <div class="noResults">No blog post matches search</div>
+
                 <?php endforeach; ?>
             </div>
 

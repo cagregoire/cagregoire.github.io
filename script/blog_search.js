@@ -4,7 +4,10 @@ function searchPosts() {
     const searchTerm = document.getElementById("searchInput").value.toLowerCase();
 
     const posts = document.querySelectorAll(".leftcolumn .card");
+    const noResults = document.querySelector(".leftcolumn .noResults");
     let shown = 0;
+
+    let anyShown = false; //tracks if any posts are visible/matched
 
     // Loop through every post available
     posts.forEach(post => {
@@ -21,7 +24,8 @@ function searchPosts() {
         const matches = title.includes(searchTerm) || bodyText.includes(searchTerm);
 
         if (searchTerm === "") {
-            post.style.display = "";   // Reset all when empty
+            post.style.display = ""; // Reset all when empty
+            anyShown = true;
             return;
         }
 
@@ -29,9 +33,11 @@ function searchPosts() {
         if (matches && shown < 4) {
             post.style.display = "";
             shown++;
+            anyShown = true;
         } else {
             post.style.display = "none";
         }
     });
+    noResults.style.display = anyShown ? "none" : "block"; // no result message when no posts are visible
 }
 
