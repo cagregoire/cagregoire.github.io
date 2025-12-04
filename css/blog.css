@@ -7,18 +7,88 @@
     text-align: center;
     font-family: "Raleway", sans-serif;
 }
-.hero h1{
-    margin-top: 50px;
-    font-size: 60px;
-    text-shadow: 1px 1px 1px #000000;
-    font-weight: 600;
+
+.hero_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;  
 }
+
+.hero h1{
+    margin-top: 4rem;
+    font-size: 60px;
+    text-shadow: 1px 1px 1px;
+    font-weight: 600;
+    background: linear-gradient(    /* Creates a gradient background */
+        to right,                   /* Gradient direction is from left to right from the first color to the last */
+        rgb(250, 54, 10),
+        rgb(114, 12, 247),
+        rgb(0, 72, 255),
+        rgb(37, 53, 195),
+        rgb(175, 46, 239),
+        rgb(217, 24, 124),
+        rgb(194, 182, 45),
+        rgb(233, 20, 20)
+    );
+    background-clip: text;          /* Background only exist on text = background is under text */
+    color: transparent;             /* To make background visible, make text color transparent */
+    background-size: 200% auto;     /* Background is 2 times bigger than text, safety measure to make sure all text is covered by background */
+    animation: colorwave 4s linear; /* Animation is caled colorwave, loops through 0% to 100% at a constant speed, takes 4s for a full loop */
+    animation-iteration-count: infinite;    /* Animation loops infinitely */
+}
+@keyframes colorwave{
+    0%{
+        background-position: 200% 50%;  /* gradient begins at the right */
+    }
+    100%{
+        background-position: 0% 50%;    /* gradient, after 4 seconds, has moved completely to the left */
+    }
+}
+
+
+
+
 .hero p{
     font-size: 28px;
     margin-bottom: 4px;
 }
 
+.hero_image {
+    margin-top: auto;
+    width: 230px
+}
+
+
+
+/* KEYFRAME ANIMATION */
+/* Animation occurs when cursor hovers image that is in the hero section */
+.hero img:hover {
+    animation: football 1.5s; /* Animation is called football, and lasts 1.5 seconds */
+    animation-iteration-count: infinite; /*Animation loops through 0% to 100% infinitely as long as cursor hovers on image */
+}
+@keyframes football {
+    0%   { transform: translate(2px, 1px) rotate(0deg); }    /* rotate to 0°, shift down-right */
+  10%  { transform: translate(-1px, -2px) rotate(36deg); }   /* rotate to 36°, shift up-left */
+  20%  { transform: translate(-3px, 0px) rotate(72deg); }    /* rotate to 72°, shift left */
+  30%  { transform: translate(3px, 2px) rotate(108deg); }    /* rotate to 108°, shift down-right */
+  40%  { transform: translate(2px, -1px) rotate(144deg); }   /* rotate to 144°, shift up-right */
+  50%  { transform: translate(-1px, 3px) rotate(180deg); }   /* rotate to 180°, shift down-left */
+  60%  { transform: translate(-3px, 2px) rotate(216deg); }   /* rotate to 216°, shift left-down */
+  70%  { transform: translate(3px, 1px) rotate(252deg); }    /* rotate to 252°, shift right-down */
+  80%  { transform: translate(-1px, -2px) rotate(288deg); }  /* rotate to 288°, shift up-left */
+  90%  { transform: translate(2px, 2px) rotate(324deg); }    /* rotate to 324°, shift down-right */
+  100% { transform: translate(1px, -2px) rotate(360deg); }   /* rotate to 360°, shift up-right, completing the full rotation */
+}
+
+
+
+
+
+
+
 /* BLOG LAYOUT */
+
 
 * {
     box-sizing: border-box;
@@ -27,6 +97,14 @@
 /****************************************
  Containers for left and right columns
  ***************************************/
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;       
+    gap: 3%;                      
+}
+
 
 /* Left column */
 .leftcolumn {   
@@ -97,6 +175,11 @@
     background-color: transparent;
     transition: background-color 0.3s;
 }
+
+
+
+
+
 
 
 

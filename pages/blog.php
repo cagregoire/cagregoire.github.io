@@ -68,9 +68,13 @@
         <?php include_once '../includes/nav.php'; ?>
 
             <div class="hero">
+
                 <!-- Hero section, static -->
-                <h1>NEO EGOIST LEAGUE<br>NEWS BLOG</h1>
-                <p>Welcome to the Neo Egoist League blog!</p>
+                <div class="hero_top">
+                    <h1 style="font-family: Poppins">NEO EGOIST LEAGUE<br>NEWS BLOG</h1>
+                    <img src="../pictures/bluelock.png" alt="Blue Lock Logo" class="hero_image">
+                </div>
+                <p style="margin-top: 8px;">Welcome to the Neo Egoist League blog!</p>
                 <p>You'll find up-to-date news, analysis, and commentary on everything unfolding<br>in the Neo Egoist League. This is based on the Blue Lock manga.</p>
             </div>
 
@@ -109,74 +113,68 @@
 
                 <?php endif; ?>
             </div>
+
             
+            <div class="leftcolumn">
+                
+                <!-- Printing blog posts in left column, dynamic -->
 
+                <?php foreach ($posts as $post): ?>
 
-            <div class="row">
+                    <div class="card" id="<?= htmlspecialchars($post['id']) ?>">
 
-                <div class="leftcolumn">
-                    
-                    <!-- Printing blog posts in left column, dynamic -->
+                        <!-- If "Delete+Edit" post button gets clicked, show delete and edit button show up top right of each post -->
+                        <?php if ($isDeleteMode && $isAdmin): ?>
 
-                    <?php foreach ($posts as $post): ?>
-
-                        <div class="card" id="<?= htmlspecialchars($post['id']) ?>">
-
-                            <!-- If "Delete+Edit" post button gets clicked, show delete and edit button show up top right of each post -->
-                            <?php if ($isDeleteMode && $isAdmin): ?>
-
-                                <!-- Edit button form -->
-                                
-                                <div style="position: absolute; top: 10px; right: 125px; display: flex; gap: 10px;">
-                                    <form method="GET" action="edit_post.php" class="editIcon" style="display:inline;">
-                                        <input type="hidden" name="edit_id" value="<?= $post['id'] ?>">
-                                        <button type="submit" name="edit">EDIT ✏️</button>
-                                    </form>
-                                </div>
-                                
-                                <!-- Delete button form -->
-                                <form method="POST" action="blog.php" onsubmit="return confirm('Are you sure you want to delete this post?');">
-                                    <input type="hidden" name="delete_id" value="<?= $post['id'] ?>">
-                                    <input type="hidden" name="delete_mode" value="1">
-                                    <button type="submit" name="delete" class="deleteIcon">DELETE 🗑️</button>
-                                </form>
-
-                            <?php endif; ?>
-
-                            <h2><?= htmlspecialchars($post['title_heading']) ?></h2>
-                            <h5><?= htmlspecialchars($post['date']) ?></h5>
-
-                            <img src="<?= htmlspecialchars($post['image']) ?>" style="height:200px;">
+                            <!-- Edit button form -->
                             
-                            <?php if (count($post['paragraphs']) > 0): ?>
+                            <div style="position: absolute; top: 10px; right: 125px; display: flex; gap: 10px;">
+                                <form method="GET" action="edit_post.php" class="editIcon" style="display:inline;">
+                                    <input type="hidden" name="edit_id" value="<?= $post['id'] ?>">
+                                    <button type="submit" name="edit">EDIT ✏️</button>
+                                </form>
+                            </div>
+                            
+                            <!-- Delete button form -->
+                            <form method="POST" action="blog.php" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                <input type="hidden" name="delete_id" value="<?= $post['id'] ?>">
+                                <input type="hidden" name="delete_mode" value="1">
+                                <button type="submit" name="delete" class="deleteIcon">DELETE 🗑️</button>
+                            </form>
 
-                                <p><?= nl2br(htmlspecialchars($post['paragraphs'][0])) ?></p>
+                        <?php endif; ?>
 
-                                <!-- If blog post has more than 1 paragraph, read more button appears that is dynamic without reloading page -->
-                                <!-- Only 1 paragraph is shown by default, if post has only 1 paragraph, no read more button appears -->
-                                <?php if (count($post['paragraphs']) > 1): ?>
+                        <h2><?= htmlspecialchars($post['title_heading']) ?></h2>
+                        <h5><?= htmlspecialchars($post['date']) ?></h5>
 
-                                    <div class="moreContent">
-                                        <?php foreach (array_slice($post['paragraphs'], 1) as $para): ?>
-                                            <p><?= nl2br(htmlspecialchars($para)) ?></p>
-                                        <?php endforeach; ?>
-                                    </div>
+                        <img src="<?= htmlspecialchars($post['image']) ?>" style="height:200px;">
+                        
+                        <?php if (count($post['paragraphs']) > 0): ?>
 
-                                    <button class="readMoreButton">Read more</button>
-                                <?php endif; ?>
+                            <p><?= nl2br(htmlspecialchars($post['paragraphs'][0])) ?></p>
+
+                            <!-- If blog post has more than 1 paragraph, read more button appears that is dynamic without reloading page -->
+                            <!-- Only 1 paragraph is shown by default, if post has only 1 paragraph, no read more button appears -->
+                            <?php if (count($post['paragraphs']) > 1): ?>
+
+                                <div class="moreContent">
+                                    <?php foreach (array_slice($post['paragraphs'], 1) as $para): ?>
+                                        <p><?= nl2br(htmlspecialchars($para)) ?></p>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <button class="readMoreButton">Read more</button>
                             <?php endif; ?>
+                        <?php endif; ?>
 
-                        </div>
+                    </div>
 
-                    <?php endforeach; ?>
-
-                </div>
-
+                <?php endforeach; ?>
             </div>
 
             <div class="rightcolumn">
 
-                <!-- Search bar section, at the top to avoid page shifting when dynamically searching -->
+                <!-- Search bar section, at the top to avoid page shifting when searching -->
                 <div class="card">
                     <h2>Search Posts</h2>
                     <input type="text" id="searchInput" placeholder="Search keywords..." style="width: 100%; padding: 8px; font-size: 16px;" onkeyup="searchPosts()">
