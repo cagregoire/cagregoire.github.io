@@ -1,3 +1,4 @@
+
 /* HERO */
 /* Center the page content, DIFFERENT max width used in other pages */
 .hero {
@@ -16,11 +17,6 @@
     font-size: 28px;
     margin-bottom: 4px;
 }
-
-
-
-
-
 
 /* BLOG LAYOUT */
 
@@ -76,6 +72,29 @@
   }
 }
 
+/* READ MORE BUTTON within blog post */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* RECENT POSTS in right column */
 
@@ -93,26 +112,6 @@
     color: blue; 
     font-size: 20px; /* prevent growing */
 }
-
-
-
-
-
-
-
-/* Image within post */
-.postImage {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-}
-
-
-
-
-
-
-
 
 /* BUTTONS, Log in, log out, delete post, add post */
 
@@ -175,10 +174,7 @@
     gap: 8px;
 }
 
-
-
-
-
+/* Delete button when clicking on Delete + Edit Post button */
 
 .deleteIcon {
     background-color: #ff0000ff;
@@ -199,7 +195,7 @@
     background-color: #c71616ff;
 }
 
-
+/* Edit button when clicking on Delete + Edit Post button */
 
 .editIcon input[type="submit"] {
     background-color: white;
@@ -224,18 +220,8 @@
     gap: 8px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /* Smooth scrolling for in-page hyperlinks */
+
 html {
   scroll-behavior: smooth;
 }

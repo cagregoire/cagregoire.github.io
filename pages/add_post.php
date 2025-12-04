@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $postsJson = file_get_contents("../includes/blog_posts.json");
     $posts = json_decode($postsJson, true);
 
-    // Checks for the last used ID number to add 1
+    // Checks for the last used ID number to append by 1
     $lastIdNum = 0;
     foreach ($posts as $p) {
         if (preg_match('/blog(\d+)/', $p['id'], $matches)) {
@@ -86,6 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <?php include_once '../includes/footer.php'; ?>
-
+        <script src="../script/autosave_draft.js" defer></script>
     </body>
 </html>
