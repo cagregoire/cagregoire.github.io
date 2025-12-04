@@ -27,6 +27,7 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
             <h3><a href="pages/calculators.php">Calculators</a></h3>
             <h3><a href="pages/my_form.php">Casper Quiz</a></h3>
             <h3><a href="pages/login.php">To-Do List</a></h3>
+            <h3><a href="pages/blog.php">Blog</a></h3>
         </div>
     </nav>
     <?php
@@ -57,6 +58,8 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
             <h3><a href="calculators.php">Calculators</a></h3>
             <h3><a href="my_form.php">Casper Quiz</a></h3>
             <h3><a href="login.php">To-Do List</a></h3>
+            <h3><a href="blog.php">Blog</a></h3>
+
         </div>
     </nav>
     <?php
@@ -64,14 +67,13 @@ if (basename($_SERVER['PHP_SELF']) == 'index.php') {
 ?>
 
 <script>
-function toggleMenu() {
-  var x = document.getElementById("links");
-  if (x.style.display === "flex") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "flex";
-    x.style.flexDirection = "column";
-  }
-}
+    function toggleMenu() {
+    var x = document.getElementById("links");
+    if (x.style.display === "flex") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "flex";
+        x.style.flexDirection = "column";
+    }
+    }
 </script>
-
