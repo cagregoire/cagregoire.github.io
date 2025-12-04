@@ -147,10 +147,24 @@
                             <h5><?= htmlspecialchars($post['date']) ?></h5>
 
                             <img src="<?= htmlspecialchars($post['image']) ?>" style="height:200px;">
+                            
+                            <?php if (count($post['paragraphs']) > 0): ?>
 
-                            <?php foreach ($post['paragraphs'] as $para): ?>
-                                <p><?= nl2br(htmlspecialchars($para)) ?></p>
-                            <?php endforeach; ?>
+                                <p><?= nl2br(htmlspecialchars($post['paragraphs'][0])) ?></p>
+
+                                <!-- If blog post has more than 1 paragraph, read more button appears that is dynamic without reloading page -->
+                                <!-- Only 1 paragraph is shown by default, if post has only 1 paragraph, no read more button appears -->
+                                <?php if (count($post['paragraphs']) > 1): ?>
+
+                                    <div class="moreContent">
+                                        <?php foreach (array_slice($post['paragraphs'], 1) as $para): ?>
+                                            <p><?= nl2br(htmlspecialchars($para)) ?></p>
+                                        <?php endforeach; ?>
+                                    </div>
+
+                                    <button class="readMoreButton">Read more</button>
+                                <?php endif; ?>
+                            <?php endif; ?>
 
                         </div>
 
@@ -220,5 +234,6 @@
         <br>
         <?php include_once '../includes/footer.php'; ?>
         <script src="../script/blog_search.js" defer></script>
+        <script src="../script/blog_readmore.js" defer></script>
     </body>
 </html>

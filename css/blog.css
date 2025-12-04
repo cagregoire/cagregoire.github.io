@@ -54,10 +54,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 .card p {
     font-size: 18px;
     color: black;
+    margin-bottom: 8px;
 }
 .card h2 {
     font-size: 36px;
@@ -74,21 +77,26 @@
 
 /* READ MORE BUTTON within blog post */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.moreContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.moreContent p {            /* Important to make spacing between paragraphs consistent */
+    margin-bottom: 8px;
+}
+.readMoreButton {
+    color: blue;
+    display: block;
+    margin: 10px auto 0 auto;
+    padding: 6px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
 
 
 
