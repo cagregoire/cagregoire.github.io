@@ -176,6 +176,10 @@
 }
 
 
+
+
+
+
 .deleteIcon {
     background-color: #ff0000ff;
     color: white;
@@ -189,6 +193,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
+    display:inline;
 }
 .deleteIcon:hover {
     background-color: #c71616ff;
@@ -196,6 +201,28 @@
 
 
 
+.editIcon input[type="submit"] {
+    background-color: white;
+    width: auto;
+    margin: 20px 0 0 auto;
+    color: black;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+}
+.editIcon input[type="submit"]:hover {
+    background-color: #e4e4e4;
+}
+
+.editIcon {
+    display: flex;
+    gap: 8px;
+}
 
 
 

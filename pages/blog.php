@@ -87,7 +87,7 @@
                     
                         <form method="POST" action="blog.php" style="display:inline;">
                             <input type="hidden" name="delete_mode" value="1">
-                            <input type="submit" value="Delete Post" style="padding: 8px 16px; font-size: 20px; cursor: pointer;">
+                            <input type="submit" value="Delete + Edit Post" style="padding: 8px 16px; font-size: 20px; cursor: pointer;">
                         </form>
                     
                     </div>
@@ -122,10 +122,20 @@
 
                         <div class="card" id="<?= htmlspecialchars($post['id']) ?>">
 
-                            <!-- If delete post button gets clicked, show delete icon top right of each post -->
+                            <!-- If "Delete+Edit" post button gets clicked, show delete and edit button show up top right of each post -->
                             <?php if ($isDeleteMode && $isAdmin): ?>
 
-                                <form method="POST" action="blog.php" onsubmit="return confirm('Are you sure you want to delete this post?');" style="display:inline;">
+                                <!-- Edit button form -->
+                                
+                                <div style="position: absolute; top: 10px; right: 125px; display: flex; gap: 10px;">
+                                    <form method="GET" action="edit_post.php" class="editIcon" style="display:inline;">
+                                        <input type="hidden" name="edit_id" value="<?= $post['id'] ?>">
+                                        <button type="submit" name="edit">EDIT ✏️</button>
+                                    </form>
+                                </div>
+                                
+                                <!-- Delete button form -->
+                                <form method="POST" action="blog.php" onsubmit="return confirm('Are you sure you want to delete this post?');">
                                     <input type="hidden" name="delete_id" value="<?= $post['id'] ?>">
                                     <input type="hidden" name="delete_mode" value="1">
                                     <button type="submit" name="delete" class="deleteIcon">DELETE 🗑️</button>
