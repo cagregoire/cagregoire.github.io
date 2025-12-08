@@ -1,0 +1,333 @@
+
+/* HERO */
+/* Center the page content, DIFFERENT max width used in other pages */
+.hero {
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.hero_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;  
+}
+
+.hero h1{
+    margin-top: 4rem;
+    font-size: 60px;
+    text-shadow: 1px 1px 1px;
+    font-weight: 600;
+    background: linear-gradient(    /* Creates a gradient background */
+        to right,                   /* Gradient direction is from left to right from the first color to the last */
+        rgb(250, 54, 10),
+        rgb(114, 12, 247),
+        rgb(0, 72, 255),
+        rgb(37, 53, 195),
+        rgb(175, 46, 239),
+        rgb(217, 24, 124),
+        rgb(194, 182, 45),
+        rgb(233, 20, 20)
+    );
+    background-clip: text;          /* Background only exist on text = background is under text */
+    color: transparent;             /* To make background visible, make text color transparent */
+    background-size: 200% auto;     /* Background is 2 times bigger than text, safety measure to make sure all text is covered by background */
+    animation: colorwave 4s linear; /* Animation is caled colorwave, loops through 0% to 100% at a constant speed, takes 4s for a full loop */
+    animation-iteration-count: infinite;    /* Animation loops infinitely */
+}
+@keyframes colorwave{
+    0%{
+        background-position: 200% 50%;  /* gradient begins at the right */
+    }
+    100%{
+        background-position: 0% 50%;    /* gradient, after 4 seconds, has moved completely to the left */
+    }
+}
+
+
+
+
+.hero p{
+    font-size: 28px;
+    margin-bottom: 4px;
+}
+
+.hero_image {
+    margin-top: auto;
+    width: 230px
+}
+
+
+
+/* KEYFRAME ANIMATION */
+/* Animation occurs when cursor hovers image that is in the hero section */
+.hero img:hover {
+    animation: football 1.5s; /* Animation is called football, and lasts 1.5 seconds */
+    animation-iteration-count: infinite; /*Animation loops through 0% to 100% infinitely as long as cursor hovers on image */
+}
+@keyframes football {
+    0%   { transform: translate(2px, 1px) rotate(0deg); }    /* rotate to 0°, shift down-right */
+  10%  { transform: translate(-1px, -2px) rotate(36deg); }   /* rotate to 36°, shift up-left */
+  20%  { transform: translate(-3px, 0px) rotate(72deg); }    /* rotate to 72°, shift left */
+  30%  { transform: translate(3px, 2px) rotate(108deg); }    /* rotate to 108°, shift down-right */
+  40%  { transform: translate(2px, -1px) rotate(144deg); }   /* rotate to 144°, shift up-right */
+  50%  { transform: translate(-1px, 3px) rotate(180deg); }   /* rotate to 180°, shift down-left */
+  60%  { transform: translate(-3px, 2px) rotate(216deg); }   /* rotate to 216°, shift left-down */
+  70%  { transform: translate(3px, 1px) rotate(252deg); }    /* rotate to 252°, shift right-down */
+  80%  { transform: translate(-1px, -2px) rotate(288deg); }  /* rotate to 288°, shift up-left */
+  90%  { transform: translate(2px, 2px) rotate(324deg); }    /* rotate to 324°, shift down-right */
+  100% { transform: translate(1px, -2px) rotate(360deg); }   /* rotate to 360°, shift up-right, completing the full rotation */
+}
+
+
+
+
+
+
+
+/* BLOG LAYOUT */
+
+
+* {
+    box-sizing: border-box;
+}
+
+/****************************************
+ Containers for left and right columns
+ ***************************************/
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;       
+    gap: 3%;                      
+}
+
+
+/* Left column */
+.leftcolumn {   
+    float: left;
+    width: 72%;
+    margin-left: 3%;
+}
+.leftcolumn .card{
+    margin-bottom: 20px; /* Space between posts, exclusive to left column */
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 22%;
+    margin-right: 3%;
+    padding-left: 20px;
+}
+
+/* Card for posts + aside */
+.card {
+    background-color: #e7f1fc;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+.card p {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 8px;
+}
+.card h2 {
+    font-size: 36px;
+    color: blue;
+}
+
+
+/* When searchign and nothing comes up, to avoid right column from shifting left completely and breaking the page, custom "NO RESULT" card is created */
+
+.noResults {
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+
+
+/* When screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* READ MORE BUTTON within blog post */
+
+.moreContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.moreContent p {            /* Important to make spacing between paragraphs consistent */
+    margin-bottom: 8px;
+}
+.readMoreButton {
+    color: blue;
+    display: block;
+    margin: 10px auto 0 auto;
+    padding: 6px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* RECENT POSTS in right column */
+
+.recent_posts li{
+    margin-bottom: 10px;
+}
+.recent_posts a {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease; /* smooth fade */
+}
+.recent_posts a:hover {
+    color: blue; 
+    font-size: 20px; /* prevent growing */
+}
+
+/* BUTTONS, Log in, log out, delete post, add post */
+
+.login input[type="submit"] {
+    background-color: #28a745;
+    width: auto;
+    margin: 20px 0 0 auto;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+}
+.login input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.logout input[type="submit"] {
+    background-color: #ff0000ff;
+    width: auto;
+    margin: 20px 0 0 auto;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+}
+.logout input[type="submit"]:hover {
+    background-color: #c71616ff;
+}
+
+.admin_buttons input[type="submit"] {
+    background-color: white;
+    width: auto;
+    margin: 20px 0 0 auto;
+    color: black;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+}
+.admin_buttons input[type="submit"]:hover {
+    background-color: #e4e4e4;
+}
+
+.admin_buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Delete button when clicking on Delete + Edit Post button */
+
+.deleteIcon {
+    background-color: #ff0000ff;
+    color: white;
+    font-size: 1rem;          
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display:inline;
+}
+.deleteIcon:hover {
+    background-color: #c71616ff;
+}
+
+/* Edit button when clicking on Delete + Edit Post button */
+
+.editIcon input[type="submit"] {
+    background-color: white;
+    width: auto;
+    margin: 20px 0 0 auto;
+    color: black;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+}
+.editIcon input[type="submit"]:hover {
+    background-color: #e4e4e4;
+}
+
+.editIcon {
+    display: flex;
+    gap: 8px;
+}
+
+/* Smooth scrolling for in-page hyperlinks */
+
+html {
+  scroll-behavior: smooth;
+}
